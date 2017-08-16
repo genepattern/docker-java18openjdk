@@ -1,10 +1,6 @@
 FROM java:8u111
 
-COPY runS3OnBatch.sh /usr/local/bin/runS3OnBatch.sh
-
 RUN mkdir /build
-
-COPY Dockerfile /build/Dockerfile
 
 RUN apt-get update && apt-get upgrade --yes && \
     apt-get install build-essential --yes && \
@@ -12,8 +8,12 @@ RUN apt-get update && apt-get upgrade --yes && \
     wget --no-check-certificate https://bootstrap.pypa.io/get-pip.py && \
     python get-pip.py 
 RUN pip install awscli 
-    
+
+COPY Dockerfile /build/Dockerfile
+COPY common/container_scripts/runS3OnBatch.sh /usr/local/bin/runS3OnBatch.sh
 RUN chmod ugo+x /usr/local/bin/runS3OnBatch.sh
-COPY runLocal.sh /usr/local/bin/runLocal.sh 
+COPY common/container_scripts/runLocal.sh /usr/local/bin/runLocal.sh
+RUN chmod ugo+x /usr/local/bin/runLocal.sh
+ 
 CMD ["/usr/local/bin/runS3OnBatch.sh" ]
 
