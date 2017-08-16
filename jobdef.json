@@ -24,7 +24,7 @@
 
             }
         ],
-        "image": "liefeld/java8_openjdk_cli",
+        "image": "genepattern/docker-java18openjdk",
         "memory": 2000,
         "mountPoints": [],
         "ulimits": [],
