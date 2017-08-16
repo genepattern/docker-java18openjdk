@@ -31,7 +31,7 @@
         "vcpus": 2,
         "volumes": []
     },
-    "jobDefinitionName": "Java18_Generic",
+    "jobDefinitionName": "Java18_OpenJDK_Generic",
     "parameters": {
         "exe1": "-u",
         "inputFileDirectory": "job_22345",
